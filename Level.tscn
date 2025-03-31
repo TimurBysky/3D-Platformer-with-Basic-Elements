@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://cq2vhb2dle274"]
+
+[ext_resource type="Script" uid="uid://bm7qb1w8ptvmj" path="res://area_3d_3.gd" id="1_bexhn"]
+[ext_resource type="Script" uid="uid://d15tmc1x6garl" path="res://area_3d.gd" id="2_t7iv1"]
+[ext_resource type="PackedScene" uid="uid://m7ygpt0aurvh" path="res://game_ui.tscn" id="3_2nifc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qhyq2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bexhn"]
+size = Vector3(7.94707, 0.694397, 8.89586)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t7iv1"]
+radius = 0.647405
+
+[sub_resource type="SphereMesh" id="SphereMesh_qhyq2"]
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_bexhn"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(7.955, 0, 0, 0, 0.5, 0, 0, 0, 8.9, 0, -0.0621473, 0.0212182)
+mesh = SubResource("BoxMesh_qhyq2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140305, -0.152802, 0.0163651)
+shape = SubResource("BoxShape3D_bexhn")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, 0, 0.873924, -2.15366)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(7.955, 0, 0, 0, 0.5, 0, 0, 0, 8.9, 0, -0.0621473, 0.0212182)
+mesh = SubResource("BoxMesh_qhyq2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140305, -0.152802, 0.0163651)
+shape = SubResource("BoxShape3D_bexhn")
+
+[node name="Area3D4" type="Area3D" parent="."]
+transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, -0.0555103, 0.627098, 0)
+script = ExtResource("1_bexhn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D4"]
+shape = SubResource("SphereShape3D_t7iv1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D4"]
+mesh = SubResource("SphereMesh_qhyq2")
+
+[node name="Area3D5" type="Area3D" parent="."]
+transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, -0.0555103, 1.20032, -2.17542)
+script = ExtResource("1_bexhn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D5"]
+shape = SubResource("SphereShape3D_t7iv1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D5"]
+mesh = SubResource("SphereMesh_qhyq2")
+
+[node name="Area3D6" type="Area3D" parent="."]
+transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, 2.14319, 0.601269, -2.17542)
+script = ExtResource("1_bexhn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D6"]
+shape = SubResource("SphereShape3D_t7iv1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D6"]
+mesh = SubResource("SphereMesh_qhyq2")
+
+[node name="Area3D7" type="Area3D" parent="."]
+transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, 3.41265, 0.601269, 2.29993)
+script = ExtResource("1_bexhn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D7"]
+shape = SubResource("SphereShape3D_t7iv1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D7"]
+mesh = SubResource("SphereMesh_qhyq2")
+
+[node name="death_area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.456607, 0)
+script = ExtResource("2_t7iv1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="death_area"]
+transform = Transform3D(31.12, 0, 0, 0, 31.12, 0, 0, 0, 31.12, 0, -1.64146, 0)
+shape = SubResource("HeightMapShape3D_bexhn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("3_2nifc")]
+
+[connection signal="body_entered" from="Area3D4" to="Area3D4" method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D5" to="Area3D5" method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D6" to="Area3D6" method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D7" to="Area3D7" method="_on_body_entered"]
+[connection signal="body_entered" from="death_area" to="death_area" method="_on_body_entered"]
