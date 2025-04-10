@@ -20,4 +20,3 @@ transform = Transform3D(1.9802, 0, 0, 0, 1.89675, 0.568799, 0, -0.568799, 1.8967
 size = 2.905
 
 [node name="godotman" parent="." instance=ExtResource("2_onrkg")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
