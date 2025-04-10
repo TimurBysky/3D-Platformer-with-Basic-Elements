@@ -4,14 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://coatwwlq0o0ci" path="res://godotman.glb" id="2_onrkg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
-size = Vector3(2.07864, 1.95557, 0.875488)
+size = Vector3(0.948127, 1.95557, 0.875488)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 0, 0, 0)
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00761414, 0.982178, 0.0622559)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0442014, 0.982178, 0.0622559)
 shape = SubResource("BoxShape3D_onrkg")
 debug_color = Color(0.640543, 0.701049, 0.927553, 0.42)
 
