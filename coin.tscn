@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbu4vboc50wuj"]
+
+[ext_resource type="Script" uid="uid://bm7qb1w8ptvmj" path="res://area_3d_3.gd" id="1_d5gmh"]
+[ext_resource type="PackedScene" uid="uid://8y3vwabl3opb" path="res://gear_3d_icon.glb" id="2_0t63x"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v7riw"]
+radius = 0.552901
+height = 1.18866
+
+[node name="Coin" type="Area3D"]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0, 0, 0)
+script = ExtResource("1_d5gmh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_v7riw")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_0t63x")]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, 0, 0.100205)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
