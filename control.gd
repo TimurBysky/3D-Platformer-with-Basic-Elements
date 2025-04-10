@@ -1,8 +1,6 @@
 extends Control  # Убедитесь, что скрипт привязан к Control-ноде
 
-@onready var coin_label = $MarginContainer/CoinLabel # Если Label прямо в GameUI
-# Или:
-# @onready var coin_label = $Panel/CoinLabel  # Если Label вложен в Panel
+@onready var coin_label = $MarginContainer/CoinLabel 
 
 func update_coin_count(value):
 	if coin_label:
