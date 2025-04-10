@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var model = get_node("godotman/godot_rig/Skeleton3D/godot_mesh")  # Предполагая, что модель - это дочерний узел
 
 # Настройки
-var speed = 5.0
+var speed = 3.0
 var jump_force = 4.5
 var gravity = 9.8
 var rotation_speed = 10.0  # Скорость поворота
@@ -44,17 +44,17 @@ func _physics_process(delta):
 		var target_angle = atan2(direction.x, direction.z)
 		model.rotation.y = lerp_angle(model.rotation.y, target_angle, delta * rotation_speed)
 		
-		animation_player.play("run")
+		animation_player.play("run", 0.3, 1.0)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-		animation_player.play("idle")
+		animation_player.play("idle", 0.3, 1.0)
 	
 	move_and_slide()
 
 func _on_death_zone_entered():
 	is_alive = false
-	animation_player.play("die")
+	animation_player.play("die", 0.3, 1.0)
 	await get_tree().create_timer(1.0).timeout
 	position = Vector3(0, 5, 0)
 	is_alive = true
