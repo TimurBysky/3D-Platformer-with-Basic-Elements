@@ -64,8 +64,10 @@ func set_state(new_state: State):
 			animation_player.play("die", 0.3)
 
 func _on_death_zone_entered():
+	YandexSDK.init_game()
 	is_alive = false
 	await get_tree().create_timer(1.0).timeout
+	YandexSDK.show_interstitial_ad()
 	position = Vector3(0, 5, 0)
 	is_alive = true
 	set_state(State.IDLE)

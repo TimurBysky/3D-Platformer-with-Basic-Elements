@@ -15,10 +15,17 @@ run/main_scene="uid://b0sf7duev5th8"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+YandexSDK="*res://addons/godot-yandex-games-sdk/yandex_sdk.gd"
+
 [display]
 
-window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-yandex-games-sdk/plugin.cfg")
 
 [input]
 
@@ -54,4 +61,5 @@ jump={
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
