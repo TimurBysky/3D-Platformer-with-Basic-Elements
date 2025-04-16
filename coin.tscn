@@ -93,7 +93,7 @@ _data = {
 &"idle": SubResource("Animation_0t63x")
 }
 
-[node name="Coin" type="Area3D"]
+[node name="Coin" type="Area3D" groups=["Coins"]]
 transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0, 0, 0)
 script = ExtResource("1_d5gmh")
 

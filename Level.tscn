@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://cq2vhb2dle274"]
+[gd_scene load_steps=6 format=3 uid="uid://cq2vhb2dle274"]
 
-[ext_resource type="PackedScene" uid="uid://dbu4vboc50wuj" path="res://coin.tscn" id="1_2nifc"]
 [ext_resource type="Script" uid="uid://d15tmc1x6garl" path="res://area_3d.gd" id="2_t7iv1"]
 [ext_resource type="PackedScene" uid="uid://m7ygpt0aurvh" path="res://game_ui.tscn" id="3_2nifc"]
 
@@ -22,23 +21,6 @@ mesh = SubResource("BoxMesh_qhyq2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Main_Platform"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140305, -0.152802, 0.0163651)
 shape = SubResource("BoxShape3D_bexhn")
-
-[node name="Platform" type="StaticBody3D" parent="."]
-transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, 0, 0.873924, -2.15366)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform"]
-transform = Transform3D(7.955, 0, 0, 0, 0.5, 0, 0, 0, 8.9, 0, -0.0621473, 0.0212182)
-mesh = SubResource("BoxMesh_qhyq2")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140305, -0.152802, 0.0163651)
-shape = SubResource("BoxShape3D_bexhn")
-
-[node name="Coin" parent="." instance=ExtResource("1_2nifc")]
-transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, -0.170994, 0.669073, -0.119779)
-
-[node name="Coin2" parent="." instance=ExtResource("1_2nifc")]
-transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, -0.170994, 1.19999, -2.1079)
 
 [node name="death_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.456607, 0)

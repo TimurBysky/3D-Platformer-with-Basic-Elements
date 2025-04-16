@@ -23,6 +23,10 @@ func _ready():
 func add_coin():
 	coins += 1
 	emit_signal("coin_collected", coins)
+	
+func check_coins_count():
+	if coins == get_tree().get_nodes_in_group("Coins").size():
+		Label
 
 func _physics_process(delta):
 	if not is_alive: 
@@ -64,7 +68,6 @@ func set_state(new_state: State):
 			animation_player.play("die", 0.3)
 
 func _on_death_zone_entered():
-	YandexSDK.init_game()
 	is_alive = false
 	await get_tree().create_timer(1.0).timeout
 	YandexSDK.show_interstitial_ad()
