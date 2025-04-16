@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://m7ygpt0aurvh"]
-
-[ext_resource type="Script" uid="uid://dbtxaudwhy01d" path="res://control.gd" id="1_ue6oa"]
+[gd_scene format=3 uid="uid://m7ygpt0aurvh"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -11,7 +9,6 @@ offset_top = -97.0
 offset_right = 228.0
 grow_vertical = 0
 size_flags_stretch_ratio = 3.0
-script = ExtResource("1_ue6oa")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

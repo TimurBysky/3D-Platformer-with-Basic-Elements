@@ -15,10 +15,14 @@ var rotation_speed = 10.0  # Скорость поворота
 # Переменные
 var is_alive = true
 var coins = 0
+var ui: Node3D
 signal coin_collected(amount)
 
 func _ready():
-	animation_player.play("idle")
+	ui = $"../Node3D"
+	coin_collected.connect(ui.update_coin_count)
+	set_state(State.IDLE)
+	
 
 func add_coin():
 	coins += 1
@@ -30,7 +34,6 @@ func check_coins_count():
 
 func _physics_process(delta):
 	if not is_alive: 
-		set_state(State.DEAD)
 		return
 	
 	# Гравитация
@@ -69,6 +72,7 @@ func set_state(new_state: State):
 
 func _on_death_zone_entered():
 	is_alive = false
+	set_state(State.DEAD)
 	await get_tree().create_timer(1.0).timeout
 	YandexSDK.show_interstitial_ad()
 	position = Vector3(0, 5, 0)
