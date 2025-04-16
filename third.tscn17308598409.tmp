@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://523p61b4ropx"]
+
+[ext_resource type="PackedScene" uid="uid://cq2vhb2dle274" path="res://Level.tscn" id="1_leicr"]
+[ext_resource type="PackedScene" uid="uid://b6adwbf1abwul" path="res://platform.tscn" id="2_jrkaf"]
+[ext_resource type="PackedScene" uid="uid://dbu4vboc50wuj" path="res://coin.tscn" id="3_7sy54"]
+[ext_resource type="PackedScene" uid="uid://cfn8nw30jg268" path="res://player.tscn" id="4_tokan"]
+
+[sub_resource type="GDScript" id="GDScript_leicr"]
+script/source = "extends Main
+
+	
+"
+
+[node name="Third" type="Node3D"]
+script = SubResource("GDScript_leicr")
+
+[node name="Node3D" parent="." instance=ExtResource("1_leicr")]
+
+[node name="Platform" parent="." instance=ExtResource("2_jrkaf")]
+transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, 2.59132, 0.675524, 0)
+
+[node name="Platform2" parent="." instance=ExtResource("2_jrkaf")]
+transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, 2.59132, 1.45393, 1.92138)
+
+[node name="Platform3" parent="." instance=ExtResource("2_jrkaf")]
+transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, -0.0193757, 1.90832, 2.08515)
+
+[node name="Coin" parent="." instance=ExtResource("3_7sy54")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0, 0.612338, 0)
+
+[node name="Coin5" parent="." instance=ExtResource("3_7sy54")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0, 0.612338, 2.88509)
+
+[node name="Coin2" parent="." instance=ExtResource("3_7sy54")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 2.62742, 1.05514, 0)
+
+[node name="Coin3" parent="." instance=ExtResource("3_7sy54")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 2.62742, 1.94227, 1.88721)
+
+[node name="Coin4" parent="." instance=ExtResource("3_7sy54")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, -0.207214, 2.32334, 1.88721)
+
+[node name="Player" parent="." instance=ExtResource("4_tokan")]
+transform = Transform3D(-2.20743e-08, 0, -0.505, 0, 0.505, 0, 0.505, 0, -2.20743e-08, -2.38374, 0.981256, -2.82884)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0.707107, -0.707107, 3.78552e-08, 0.707107, 0.707107, 1, -1.13133e-08, -4.2222e-08, -5, 5, 0)

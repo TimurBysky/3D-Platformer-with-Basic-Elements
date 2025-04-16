@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0sf7duev5th8"]
+
+[ext_resource type="PackedScene" uid="uid://cq2vhb2dle274" path="res://Level.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://bessktx2humkj" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://b6adwbf1abwul" path="res://platform.tscn" id="2_7mycd"]
+[ext_resource type="PackedScene" uid="uid://cfn8nw30jg268" path="res://player.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://dbu4vboc50wuj" path="res://coin.tscn" id="6_272bh"]
+[ext_resource type="PackedScene" uid="uid://c8he2q66jk62n" path="res://light.tscn" id="7_272bh"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_1bvp3")
+
+[node name="Platform" parent="." instance=ExtResource("2_7mycd")]
+transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, -0.928277, 0.820602, -3.33511)
+
+[node name="Node3D" parent="." instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="Player" parent="." instance=ExtResource("2_h2yge")]
+transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, -1, 1, 1.98533)
+
+[node name="Coin" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, -0.953082, 0.68153, -1.31745)
+
+[node name="Coin2" parent="." instance=ExtResource("6_272bh")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, -0.953082, 1.29271, -3.35039)
+
+[node name="Light" parent="." instance=ExtResource("7_272bh")]
+transform = Transform3D(1, 0, 0, 0, 0.276543, 0.961002, 0, -0.961002, 0.276543, -0.616969, 4.62711, -11.0901)
+
+[connection signal="coin_collected" from="Player" to="Node3D" method="update_coin_count"]

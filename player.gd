@@ -20,16 +20,21 @@ var level: Node3D
 
 signal coin_collected(amount)
 signal victory
+signal defeat
 
 func _ready():
+	_conect_all()
+	set_state(State.IDLE)
+	print(str(get_tree().get_nodes_in_group("Coins").size()))
+	
+func _conect_all():
 	ui = $"../Node3D"
 	level = $".."
 	coin_collected.connect(ui.update_coin_count)
 	victory.connect(ui.victory_text)
 	victory.connect(level.change_level)
-	set_state(State.IDLE)
-	print(str(get_tree().get_nodes_in_group("Coins").size()))
-	
+	defeat.connect(ui.defeat_text)
+	defeat.connect(level.defeat)
 
 func add_coin():
 	coins += 1
@@ -86,11 +91,8 @@ func _on_death_zone_entered():
 	set_state(State.DEAD)
 	await get_tree().create_timer(1.0).timeout
 	YandexSDK.show_interstitial_ad()
-	position = Vector3(0, 5, 0)
-	is_alive = true
-	set_state(State.IDLE)
+	defeat.emit()
+	#position = Vector3(0, 5, 0)
+	#is_alive = true
+	#set_state(State.IDLE)
 	
-func _disconnect():
-	coin_collected.disconnect(ui.update_coin_count)
-	victory.disconnect(ui.victory_text)
-	victory.disconnect(level.change_level)
