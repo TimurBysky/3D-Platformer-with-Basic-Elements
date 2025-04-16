@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0sf7duev5th8"]
+[gd_scene load_steps=8 format=3 uid="uid://b0sf7duev5th8"]
 
 [ext_resource type="PackedScene" uid="uid://cq2vhb2dle274" path="res://Level.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://bessktx2humkj" path="res://main.gd" id="1_1bvp3"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://cfn8nw30jg268" path="res://player.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dbu4vboc50wuj" path="res://coin.tscn" id="6_272bh"]
 [ext_resource type="PackedScene" uid="uid://c8he2q66jk62n" path="res://light.tscn" id="7_272bh"]
+
+[sub_resource type="Environment" id="Environment_7mycd"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_1bvp3")
@@ -27,5 +32,8 @@ transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, -0.953082, 1.2927
 
 [node name="Light" parent="." instance=ExtResource("7_272bh")]
 transform = Transform3D(1, 0, 0, 0, 0.276543, 0.961002, 0, -0.961002, 0.276543, -0.616969, 4.62711, -11.0901)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_7mycd")
 
 [connection signal="coin_collected" from="Player" to="Node3D" method="update_coin_count"]

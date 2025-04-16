@@ -5,7 +5,7 @@ var next_scene: PackedScene
 var await_time: float = 3.0
 
 func _ready() -> void:
-	YandexSDK.init_game()
+	await YandexSDK.init_game()
 
 func change_level():
 	var timer = get_tree().create_timer(await_time)
