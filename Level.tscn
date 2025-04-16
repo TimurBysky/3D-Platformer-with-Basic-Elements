@@ -6,17 +6,23 @@
 [sub_resource type="GDScript" id="GDScript_t7iv1"]
 script/source = "extends Node3D  # Убедитесь, что скрипт привязан к Control-ноде
 var coin_label: Label
+var end_of_label: Label
 
 func _ready() -> void:
 	var ui_scene = preload(\"res://game_ui.tscn\").instantiate()
 	add_child(ui_scene)
 	coin_label = ui_scene.get_node(\"MarginContainer/CoinLabel\")
+	end_of_label = ui_scene.get_node(\"MarginContainer/EndOfLevel\")
 
 func update_coin_count(value):
 	if coin_label:
 		coin_label.text = \"Монеты: %d\" % value
 	else:
 		printerr(\"CoinLabel не найден!\")
+
+func victory_text():
+	print(\"Victory\")
+	end_of_label.text = \"Victory!\"
 "
 
 [sub_resource type="BoxMesh" id="BoxMesh_qhyq2"]

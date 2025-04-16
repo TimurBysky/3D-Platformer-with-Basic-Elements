@@ -30,6 +30,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 56
 
-[node name="End of level" type="Label" parent="MarginContainer"]
+[node name="EndOfLevel" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4

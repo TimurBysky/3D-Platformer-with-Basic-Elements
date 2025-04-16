@@ -16,21 +16,27 @@ var rotation_speed = 10.0  # Скорость поворота
 var is_alive = true
 var coins = 0
 var ui: Node3D
+
 signal coin_collected(amount)
+signal victory
 
 func _ready():
 	ui = $"../Node3D"
 	coin_collected.connect(ui.update_coin_count)
+	victory.connect(ui.victory_text)
 	set_state(State.IDLE)
+	#print(str(get_tree().get_nodes_in_group("Coins").size()))
 	
 
 func add_coin():
 	coins += 1
+	check_coins_count()
 	emit_signal("coin_collected", coins)
 	
 func check_coins_count():
 	if coins == get_tree().get_nodes_in_group("Coins").size():
-		Label
+		print("Coins_Collected")
+		victory.emit()
 
 func _physics_process(delta):
 	if not is_alive: 
