@@ -25,7 +25,6 @@ signal defeat
 func _ready():
 	_conect_all()
 	set_state(State.IDLE)
-	print(str(get_tree().get_nodes_in_group("Coins").size()))
 	
 func _conect_all():
 	ui = $"../Node3D"
@@ -92,7 +91,5 @@ func _on_death_zone_entered():
 	await get_tree().create_timer(1.0).timeout
 	YandexSDK.show_interstitial_ad()
 	defeat.emit()
-	#position = Vector3(0, 5, 0)
-	#is_alive = true
-	#set_state(State.IDLE)
+
 	

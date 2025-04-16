@@ -16,7 +16,7 @@ shape = SubResource("BoxShape3D_onrkg")
 debug_color = Color(0.640543, 0.701049, 0.927553, 0.42)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1.9802, 0, 0, 0, 1.89675, 0.568799, 0, -0.568799, 1.89675, -0.14313, 2.05552, 3.81498)
+transform = Transform3D(1.9802, 0, 0, 0, 1.75435, 0.918398, 0, -0.918398, 1.75435, -9.44232e-07, 3.73809, 6.20633)
 size = 2.905
 
 [node name="godotman" parent="." instance=ExtResource("2_onrkg")]
