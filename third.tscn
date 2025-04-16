@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://523p61b4ropx"]
+[gd_scene load_steps=8 format=3 uid="uid://523p61b4ropx"]
 
 [ext_resource type="PackedScene" uid="uid://cq2vhb2dle274" path="res://Level.tscn" id="1_leicr"]
 [ext_resource type="PackedScene" uid="uid://b6adwbf1abwul" path="res://platform.tscn" id="2_jrkaf"]
@@ -13,6 +13,13 @@ func _ready() -> void:
 	next_scene = preload(\"res://third.tscn\")
 	
 "
+
+[sub_resource type="Environment" id="Environment_jrkaf"]
+background_mode = 2
+background_color = Color(0.693293, 0.804962, 0.89478, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
 
 [node name="Third" type="Node3D"]
 script = SubResource("GDScript_leicr")
@@ -48,3 +55,6 @@ transform = Transform3D(1, 0, 0, 0, 0.577843, 0.816148, 0, -0.816148, 0.577843, 
 
 [node name="Player" parent="." instance=ExtResource("4_tokan")]
 transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 0, 0.668739, 3.77493)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jrkaf")

@@ -9,8 +9,8 @@
 
 [sub_resource type="Environment" id="Environment_7mycd"]
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.2
+ambient_light_color = Color(0.779291, 0.779291, 0.779291, 1)
+ambient_light_energy = 0.15
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_1bvp3")
