@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://523p61b4ropx"]
+
+[ext_resource type="PackedScene" uid="uid://cq2vhb2dle274" path="res://Level.tscn" id="1_leicr"]
+[ext_resource type="PackedScene" uid="uid://b6adwbf1abwul" path="res://platform.tscn" id="2_jrkaf"]
+[ext_resource type="PackedScene" uid="uid://dbu4vboc50wuj" path="res://coin.tscn" id="3_7sy54"]
+[ext_resource type="PackedScene" uid="uid://cfn8nw30jg268" path="res://player.tscn" id="4_tokan"]
+[ext_resource type="PackedScene" uid="uid://c8he2q66jk62n" path="res://light.tscn" id="5_jrkaf"]
+
+[sub_resource type="GDScript" id="GDScript_leicr"]
+script/source = "extends \"res://level_script.gd\"
+
+func _ready() -> void:
+	next_scene = preload(\"res://third.tscn\")
+	
+"
+
+[sub_resource type="Environment" id="Environment_jrkaf"]
+background_mode = 2
+background_color = Color(0.693293, 0.804962, 0.89478, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
+
+[node name="Third" type="Node3D"]
+script = SubResource("GDScript_leicr")
+
+[node name="Node3D" parent="." instance=ExtResource("1_leicr")]
+
+[node name="Platform" parent="." instance=ExtResource("2_jrkaf")]
+transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, 2.59132, 0.675524, -2.46294)
+
+[node name="Platform2" parent="." instance=ExtResource("2_jrkaf")]
+transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, -0.791189, 1.45393, -2.63377)
+
+[node name="Platform3" parent="." instance=ExtResource("2_jrkaf")]
+transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, -2.29694, 1.90832, -0.41975)
+
+[node name="Coin" parent="." instance=ExtResource("3_7sy54")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0, 0.612338, 0)
+
+[node name="Coin5" parent="." instance=ExtResource("3_7sy54")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 2.5911, 0.612338, -0.17863)
+
+[node name="Coin2" parent="." instance=ExtResource("3_7sy54")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 2.62742, 1.05514, -2.46294)
+
+[node name="Coin3" parent="." instance=ExtResource("3_7sy54")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, -0.635687, 1.94227, -2.54301)
+
+[node name="Coin4" parent="." instance=ExtResource("3_7sy54")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, -2.18855, 2.32334, -0.434769)
+
+[node name="Light" parent="." instance=ExtResource("5_jrkaf")]
+transform = Transform3D(1, 0, 0, 0, 0.577843, 0.816148, 0, -0.816148, 0.577843, 0, 6.71715, -0.591468)
+
+[node name="Player" parent="." instance=ExtResource("4_tokan")]
+transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 0, 0.668739, 3.77493)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jrkaf")

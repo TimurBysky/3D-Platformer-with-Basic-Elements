@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://b5jh412bscj8w"]
+
+[ext_resource type="PackedScene" uid="uid://cfn8nw30jg268" path="res://player.tscn" id="1_06iwn"]
+[ext_resource type="PackedScene" uid="uid://cq2vhb2dle274" path="res://Level.tscn" id="2_7dclk"]
+[ext_resource type="PackedScene" uid="uid://b6adwbf1abwul" path="res://platform.tscn" id="3_1m2b7"]
+[ext_resource type="PackedScene" uid="uid://dbu4vboc50wuj" path="res://coin.tscn" id="4_f5t4d"]
+[ext_resource type="PackedScene" uid="uid://c8he2q66jk62n" path="res://light.tscn" id="5_f5t4d"]
+
+[sub_resource type="GDScript" id="GDScript_f5t4d"]
+script/source = "extends \"res://level_script.gd\"
+
+func _ready():
+	next_scene = preload(\"res://third.tscn\")  # Для второй сцены
+"
+
+[sub_resource type="Environment" id="Environment_f5t4d"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
+
+[node name="Second" type="Node3D"]
+script = SubResource("GDScript_f5t4d")
+
+[node name="Player" parent="." instance=ExtResource("1_06iwn")]
+transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, -1, 1, 2)
+
+[node name="Node3D" parent="." instance=ExtResource("2_7dclk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.143581, 0, -0.7369)
+
+[node name="Platform" parent="." instance=ExtResource("3_1m2b7")]
+transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, 0, 0.749041, -3.28343)
+
+[node name="Platform2" parent="." instance=ExtResource("3_1m2b7")]
+transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, 2.05985, 1.49874, -3.28343)
+
+[node name="Coin" parent="." instance=ExtResource("4_f5t4d")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0, 0.603675, 0)
+
+[node name="Coin2" parent="." instance=ExtResource("4_f5t4d")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 0, 1.26195, -3.32843)
+
+[node name="Coin3" parent="." instance=ExtResource("4_f5t4d")]
+transform = Transform3D(0.455, 0, 0, 0, 0.455, 0, 0, 0, 0.455, 1.96935, 1.98941, -3.32843)
+
+[node name="Light" parent="." instance=ExtResource("5_f5t4d")]
+transform = Transform3D(1, 0, 0, 0, 0.577843, 0.816148, 0, -0.816148, 0.577843, 0, 6.71715, -0.591468)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f5t4d")

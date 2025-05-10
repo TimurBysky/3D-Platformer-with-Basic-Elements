@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c8he2q66jk62n"]
+
+[node name="Light" type="DirectionalLight3D"]
+shadow_enabled = true
+directional_shadow_split_1 = 0.195

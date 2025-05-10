@@ -1,22 +1,41 @@
-[gd_scene load_steps=9 format=3 uid="uid://cq2vhb2dle274"]
+[gd_scene load_steps=7 format=3 uid="uid://cq2vhb2dle274"]
 
-[ext_resource type="Script" uid="uid://bm7qb1w8ptvmj" path="res://area_3d_3.gd" id="1_bexhn"]
 [ext_resource type="Script" uid="uid://d15tmc1x6garl" path="res://area_3d.gd" id="2_t7iv1"]
 [ext_resource type="PackedScene" uid="uid://m7ygpt0aurvh" path="res://game_ui.tscn" id="3_2nifc"]
+
+[sub_resource type="GDScript" id="GDScript_t7iv1"]
+script/source = "extends Node3D  # Убедитесь, что скрипт привязан к Control-ноде
+var coin_label: Label
+var end_of_label: Label
+
+func _ready() -> void:
+	var ui_scene = preload(\"res://game_ui.tscn\").instantiate()
+	add_child(ui_scene)
+	coin_label = ui_scene.get_node(\"MarginContainer/CoinLabel\")
+	end_of_label = ui_scene.get_node(\"MarginContainer/EndOfLevel\")
+
+func update_coin_count(value):
+	if coin_label:
+		coin_label.text = \"Монеты: %d\" % value
+	else:
+		printerr(\"CoinLabel не найден!\")
+
+func victory_text():
+	end_of_label.text = \"Victory!\"
+
+func defeat_text():
+	end_of_label.text = \"Defeat\"
+"
 
 [sub_resource type="BoxMesh" id="BoxMesh_qhyq2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bexhn"]
 size = Vector3(7.94707, 0.694397, 8.89586)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_t7iv1"]
-radius = 0.647405
-
-[sub_resource type="SphereMesh" id="SphereMesh_qhyq2"]
-
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_bexhn"]
 
 [node name="Node3D" type="Node3D"]
+script = SubResource("GDScript_t7iv1")
 
 [node name="Main_Platform" type="StaticBody3D" parent="."]
 
@@ -27,37 +46,6 @@ mesh = SubResource("BoxMesh_qhyq2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Main_Platform"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140305, -0.152802, 0.0163651)
 shape = SubResource("BoxShape3D_bexhn")
-
-[node name="Platform" type="StaticBody3D" parent="."]
-transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, 0, 0.873924, -2.15366)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform"]
-transform = Transform3D(7.955, 0, 0, 0, 0.5, 0, 0, 0, 8.9, 0, -0.0621473, 0.0212182)
-mesh = SubResource("BoxMesh_qhyq2")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140305, -0.152802, 0.0163651)
-shape = SubResource("BoxShape3D_bexhn")
-
-[node name="Coin" type="Area3D" parent="."]
-transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, -0.0555103, 0.627098, 0)
-script = ExtResource("1_bexhn")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin"]
-shape = SubResource("SphereShape3D_t7iv1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin"]
-mesh = SubResource("SphereMesh_qhyq2")
-
-[node name="Coin2" type="Area3D" parent="."]
-transform = Transform3D(0.315, 0, 0, 0, 0.315, 0, 0, 0, 0.315, -0.0555103, 1.20147, -2.18245)
-script = ExtResource("1_bexhn")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin2"]
-shape = SubResource("SphereShape3D_t7iv1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin2"]
-mesh = SubResource("SphereMesh_qhyq2")
 
 [node name="death_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.456607, 0)
@@ -71,6 +59,4 @@ shape = SubResource("HeightMapShape3D_bexhn")
 
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource("3_2nifc")]
 
-[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
-[connection signal="body_entered" from="Coin2" to="Coin2" method="_on_body_entered"]
 [connection signal="body_entered" from="death_area" to="death_area" method="_on_body_entered"]
